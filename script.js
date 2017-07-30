@@ -29,7 +29,7 @@ $(function () {
     
      $(document).keydown(function (event) { 
          
-     $(".monitor").text(event.keyCode);
+     //$(".monitor").text(event.keyCode);
          
          switch(event.keyCode)
                  {
