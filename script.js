@@ -8,7 +8,7 @@ $(function () {
         $(".lcd").removeClass("poweroff").text("8888888888");
         $(".onOff").removeClass("off");
         setTimeout(function () {
-                    $(".lcd").text(0);
+                    $(".lcd").text('0');
                     return 0;
                 }, 500);
         
@@ -104,7 +104,7 @@ $(function () {
             else 
             {
                 if(lcd.text().length <12)
-                lcd.append(char);
+                lcd.text(lcd.text()+char);
             }
             
                 }
@@ -114,12 +114,12 @@ $(function () {
                 switch (char)
                         {
                     case '.' : {
-                                  if(lock){
+                                  if(lock || lcd.text()==='0'){
                                           char="0.";
                                           lcd.text(char);
                                           lock=false;
                                           } else {
-                                              if(lcd.text().indexOf(".") < 0) lcd.append(char);
+                                              if(lcd.text().indexOf(".") < 0) lcd.text(lcd.text()+'.');
                                                 }
                                }
                         
