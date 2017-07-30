@@ -8,7 +8,7 @@
     outline:none;
 }
 body {
-    background: #bef;
+    background: #000;
 }
 .calculator {
     position: absolute;
@@ -21,7 +21,7 @@ body {
     /*background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(255,255,255,1) 90%, rgba(10,10,10,1) 100%);*/
     border: 2px solid #444;
     border-radius: 10px;
-    box-shadow: 0px 22px 30px 8px #333;
+    box-shadow: 0px 0px 55px 1px #3f3;
     background-image: url('./Spiderright_green_small.png?v=2');
     background-size: cover;
     background-position:bottom center;
