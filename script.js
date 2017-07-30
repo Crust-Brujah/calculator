@@ -74,8 +74,16 @@ $(function () {
                     
                     case '%': {
                                     let b= parseFloat(lcd.text());
-                                    b= (b/100)*mem;
-                                    result = calculate(mem,b,$(".operation").text());
+                                    if($(".operation").text() == "+") 
+                                    {
+                                        b= (b/100)*mem;
+                                        result = calculate(mem,b,"+");
+                                    }
+                                    else if($(".operation").text() == "*") 
+                                    {
+                                        result= (b/100)*mem;                                        
+                                    }
+                                    else result=b;
                                     lcd.text(result);
                                 }
                         break;
