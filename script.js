@@ -132,7 +132,7 @@ $(function () {
                      
             }
             
-      $(".monitor").text("lock:"+lock+" mem"+mem);
+      
         lcd.text()
     });
     
