@@ -27,6 +27,67 @@ $(function () {
       }
   })
     
+     $(document).keydown(function (event) { 
+         
+     $(".monitor").text(event.keyCode);
+         
+         switch(event.keyCode)
+                 {
+             case 96: $("#0").click();
+                 break;
+             case 97: $("#1").click();
+                 break;
+             case 98: $("#2").click();
+                 break;
+             case 99: $("#3").click();
+                 break;
+             case 100: $("#4").click();
+                 break;
+             case 101: $("#5").click();
+                 break;
+             case 102: $("#6").click();
+                 break;
+             case 103: $("#7").click();
+                 break;
+             case 104: $("#8").click();
+                 break;
+             case 105: $("#9").click();
+                 break;
+             case 106: $("#multi").click();
+                 break;
+             case 107: $("#plus").click();
+                 break;
+             case 109: $("#minus").click();
+                 break;
+             case 110: $("#dot").click();
+                 break;
+             case 111: $("#divi").click();
+                 break;
+             case 13: $("#wequals").click();
+                 break;
+             case 46: $("#ce").click();
+                 break;          
+             case 8: $("#c").click();
+                 break;                 
+             case 27: $("#onOff").click();
+                 break;              
+             case 112: $("#plusminus").click();
+                 break;              
+             case 113: $("#percent").click();
+                 break;              
+             case 114: $("#root").click();
+                 break;              
+                                                            
+                 
+         }
+         event.preventDefault();
+   //96 - 1  105 - 9
+         // 111/
+         // 106*  109-  107+  13enter    46 delete 8backspc  27esc
+   // else the key should be handled normally 
+ });
+    
+    
     $(".button:not(#onOff)").click(function () {
         if (!power) return false;
         let lcd = $(".lcd");
