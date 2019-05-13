@@ -185,12 +185,6 @@ $(function () {
                                     $(".operation").text('');
                                     mem=0;
                                 }    
-										case "m" : {
-                                   $(".operation").text("M");
-																		let oldvalue=jQuery.data( $("lcd"), "memory")||0;
-                                    jQuery.data( $("lcd"), "memory",oldvalue+lcd.text()  );
-                                   
-                                }    						
                         break;
                     case "C": lcd.text(0);
                         break;
