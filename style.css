@@ -15,7 +15,7 @@ body {
     top: 50%;
     left: 50%;
     width: 300px;
-    height: 365px;
+    height: 400px;
     margin-left: -150px;
     margin-top: -200px;
     /*background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(255,255,255,1) 90%, rgba(10,10,10,1) 100%);*/
@@ -31,15 +31,15 @@ body {
 .lcd.poweroff{
   color:rgba(150,255,255,0.6);
     text-shadow: 0px 0px 0px #000;
-  
+
 }
 .button.off{
     color: red;
-    
+
 }
 .onOff:hover{
 
-  
+
 }
 button.onOff {
     color: lime;
@@ -54,8 +54,9 @@ button.onOff {
 .lcd {
     width: 80%;
     height: 30px;
-    margin: 20px auto;
+    margin: 25px auto;
     padding: 10px;
+    padding-top: 15px;
     background: rgba(150,255,255,0.8);
     color: #000000;
     border: 3px inset #444;
@@ -72,7 +73,7 @@ button.onOff {
 .buttons {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     width: 80%;
@@ -82,17 +83,17 @@ button.onOff {
 .pwr {
     color: lime;
     grid-column-start: 1;
-    grid-column-end:  3 ;
-    grid-row-start: 1;
-    grid-row-end: 1;
+    grid-column-end:  4 ;
+    grid-row-start: 2;
+    grid-row-end: 2;
 }
 
 
 
 
 .divButton {
-    
-    
+
+
 }
 
 button {
@@ -110,7 +111,7 @@ button:focus {
     outline: none;
 }
 button:active {
-        
+
     /*width: 90%;
     height: 90%;*/
     border: 2px outset lime;
@@ -123,11 +124,29 @@ button:hover{
 .divButtonPlus {
   grid-column-start: 4;
   grid-column-end:4 ;
-  grid-row-start: 5;
-  grid-row-end: span 2;
+  grid-row-start: 6;
+  grid-row-end:  8;
 }
 
 
+.memory {
+    position: absolute;
+    width: 15px;
+    height: 8px;
+    color: black;
+    background: none;
+    line-height: 8px;
+    top: 35px;
+    left: 35px;
+    font-family:  monospace;
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+
+}
+.memory.active::before{
+  content: "M:";
+}
 
 .operation {
     position: absolute;
@@ -136,13 +155,13 @@ button:hover{
     color: black;
     background: none;
     line-height: 8px;
-    top: 25px;
+    top: 35px;
     right: 21px;
     font-family:  monospace;
     font-size: 15px;
-    font-weight: bolder;
+    font-weight: 900;
     text-align: center;
-        
+
 }
 
 div.monitor {
