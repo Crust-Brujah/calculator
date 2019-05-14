@@ -20,9 +20,13 @@
 <body>
     <div class="calculator">
             <div class="lcd poweroff"></div>
+            <div class="memory" id="memdisplay"></div>
             <div class="operation"></div>
             <div class="buttons">
-                
+              <div class="divButton"><button title="m" class="button" id="mplus">M+</button></div>
+              <div class="divButton"><button title="shift+M" class="button" id="mrecall">MR</button></div>
+              <div class="divButton"><button title="Esc" class="button" id="mcancel">MC</button></div>
+
                 <div class="divButton pwr"><button title="Esc" class="button onOff off" id="onOff">ON/Off</button></div>
                 <div class="divButton"><button title="Esc" class="button" id="ce">CE</button></div>
                 <div class="divButton"><button title="Backspace" class="button" id="c">C</button></div>
@@ -41,14 +45,17 @@
                 <div class="divButton"><button title="numpad 1" class="button num" id="1">1</button></div>
                 <div class="divButton"><button title="numpad 2" class="button num" id="2">2</button></div>
                 <div class="divButton"><button title="numpad 3" class="button num" id="3">3</button></div>
+
                 <div class="divButton divButtonPlus"><button title="numpad " class="button" id="plus" value="+">+</button></div>
-                <div class="divButton"><button title="numpad 0" class="button num" id="0">0</button></div>
                 <div class="divButton"><button title="numpad ," class="button num" id="dot">.</button></div>
+                <div class="divButton"><button title="numpad 0" class="button num" id="0">0</button></div>
                 <div class="divButton"><button title="Enter" class="button" id="wequals">=</button></div>
-                
-               
-           
-        
+
+
+
+
+
+
     </div>
     <div class="monitor"></div>
 </body>

@@ -1,7 +1,7 @@
 $(function () {
-    
+
     let mem=0, digit=0, power=false,lock=false;
-    
+
     $("#onOff").click(function(){
     if(!power)
       {
@@ -11,7 +11,7 @@ $(function () {
                     $(".lcd").text('0');
                     return 0;
                 }, 500);
-        
+
         power=true;
       }
     else
@@ -19,6 +19,8 @@ $(function () {
         $(".lcd").addClass("poweroff").text("Bye bye!");
         $(".onOff").addClass("off");
         $(".operation").text('');
+        $("#memdisplay").text('').removeClass("active");;
+        
         setTimeout(function () {
                     $(".lcd").text('');
                     return 0;
@@ -26,11 +28,11 @@ $(function () {
         power=false;
       }
   })
-    
-     $(document).keydown(function (event) { 
-         
+
+     $(document).keydown(function (event) {
+
      //$(".monitor").text(event.keyCode);
-         
+
          switch(event.keyCode)
                  {
              case 96: $("#0").click();
@@ -66,51 +68,51 @@ $(function () {
              case 13: $("#wequals").click();
                  break;
              case 46: $("#ce").click();
-                 break;          
+                 break;
              case 8: $("#c").click();
-                 break;                 
+                 break;
              case 27: $("#onOff").click();
-                 break;              
+                 break;
              case 112: $("#plusminus").click();
-                 break;              
+                 break;
              case 113: $("#percent").click();
-                 break;              
+                 break;
              case 114: $("#root").click();
-                 break;              
-                                                            
-                 
+                 break;
+
+
          }
          event.preventDefault();
    //96 - 1  105 - 9
          // 111/
          // 106*  109-  107+  13enter    46 delete 8backspc  27esc
-   // else the key should be handled normally 
+   // else the key should be handled normally
  });
-    
-    
+
+
     $(".button:not(#onOff)").click(function () {
         if (!power) return false;
         let lcd = $(".lcd");
         let char = $(this).text();
-        
+
         if( !isNaN( parseInt(char) ) ) //entered digit
             {
-            
+
             if(lcd.text()==='0' || lock)
             {
-                lcd.text(char); 
+                lcd.text(char);
                 lock=false;
             }
-            else 
+            else
             {
                 if(lcd.text().length <12)
                 lcd.text(lcd.text()+char);
             }
-            
+
                 }
         else // nondigit
             {
-                
+
                 switch (char)
                         {
                     case '.' : {
@@ -122,7 +124,7 @@ $(function () {
                                               if(lcd.text().indexOf(".") < 0) lcd.text(lcd.text()+'.');
                                                 }
                                }
-                        
+
                         break;
                     case '+/-': lcd.text(parseFloat(lcd.text())*(-1));
                         break;
@@ -132,17 +134,17 @@ $(function () {
                                         else lcd.text(result.toString())
                               }
                         break;
-                    
+
                     case '%': {
                                     let b= parseFloat(lcd.text());
-                                    if($(".operation").text() == "+") 
+                                    if($(".operation").text() == "+")
                                     {
                                         b= (b/100)*mem;
                                         result = calculate(mem,b,"+");
                                     }
-                                    else if($(".operation").text() == "*") 
+                                    else if($(".operation").text() == "*")
                                     {
-                                        result= (b/100)*mem;                                        
+                                        result= (b/100)*mem;
                                     }
                                     else result=b;
                                     lcd.text(result);
@@ -152,22 +154,22 @@ $(function () {
                     case '*':
                     case '-':
                     case '+':{
-                                 if(mem !== 0 && !lock) 
+                                 if(mem !== 0 && !lock)
                                  {
                                      mem = calculate(mem,lcd.text(),$(".operation").text());
                                      if( mem.toString().length >= 12) lcd.text("E-"+mem.toString().substr(0,9));
                                         else lcd.text(mem.toString());
-                                     
-                                 } 
+
+                                 }
                                 else mem = parseFloat(lcd.text());
-                                
+
                                 $(".operation").text(char);
                                 lock = true;
-                        
+
                             }
-                        
+
                         break;
-                        
+
                     case '=':{
                                 if(!lock)
                                     {
@@ -184,25 +186,58 @@ $(function () {
                                     lcd.text(0);
                                     $(".operation").text('');
                                     mem=0;
-                                }    
+                                }
                         break;
+                    case "M+" : {if(!$("#memdisplay").hasClass("active")) $("#memdisplay").addClass("active");
+                                    let oldvalue=0;
+                                    if( $("#memdisplay").text() !=="" ) oldvalue = parseFloat($("#memdisplay").text()) ;
+                                    console.log($("#memdisplay").text(),oldvalue,parseFloat(lcd.text()));
+                                    let newvalue= calculate(parseFloat(oldvalue),parseFloat(lcd.text()),"+")
+
+                                    console.log(newvalue);
+                                  $("#memdisplay").text(newvalue);
+
+
+
+
+                                }
+                        break;
+                        case "MR" : {
+
+                                        let oldvalue=0;
+                                        oldvalue = parseFloat($("#memdisplay").text()) | 0 ;
+                                        if(oldvalue>0)
+                                        {
+                                          mem = parseFloat(lcd.text());
+                                          lock=false;
+                                          lcd.text(oldvalue);
+                                        }
+
+                                    }
+                      break;
+                      case "MC" : {
+
+                                      $("#memdisplay").text('').removeClass("active");
+
+                                  }
+                    break;
                     case "C": lcd.text(0);
                         break;
                     default:  return false;
                     }
-                     
+
             }
-            
-      
+
+
         lcd.text()
     });
-    
-    
+
+
   function calculate(a,b,operation)
   {
     a=parseFloat(a);
     b=parseFloat(b);
-    let c;  
+    let c;
     switch (operation)
         {
       case "+": c = a+b;
@@ -210,12 +245,12 @@ $(function () {
       case "-": c= a-b;
         break;
       case "*": c = a*b;
-        break;  
+        break;
      case "/": c = a/b;
-        break; 
+        break;
       default: return 0;
          }
-     return   parseFloat(c.toPrecision(10));
+     return   parseFloat(c.toPrecision(12));
   }
-  
+
 });
